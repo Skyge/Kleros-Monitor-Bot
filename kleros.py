@@ -15,7 +15,7 @@ class Kleros:
     def last_dispute_id(self):
         filter = self.connection.events.DisputeCreation.createFilter(fromBlock=7303699,
             argument_filters={"topic0": "0x141dfc18aa6a56fc816f44f0e9e2f1ebc92b15ab167770e17db5b084c10ed995"} )
-        self.last_dispute_id = filter.get_all_entries()[-1]['args']['_disputeID']
+        self.last_dispute_id = filter.get_new_entries()['args']['_disputeID']
         return self.last_dispute_id
 
 class KlerosDispute(Kleros):
